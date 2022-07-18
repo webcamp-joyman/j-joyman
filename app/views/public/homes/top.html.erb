@@ -20,7 +20,7 @@
         <% @itemes.each do |item| %>
           <div class="new_item_image ml-3">
             <%= link_to item_path(item) do %>
-              <%= image_tag item.get_item_image(150,150) %>
+              <%= image_tag item.get_image(150,150) %>
             <% end %>
             <%= item.name %><br>
             ￥<%= (item.price).to_s(:delimited) %><br>
