@@ -12,17 +12,18 @@
         </tr>
       </thead>
       <tbody>
-        <% @cart_items.each do |cart_item| %>
-          <tr>
-            <td>
-              <%= image_tag cart_item.item.get_image(50,50) %>
-              <%= cart_item.item.name %>
-            </td>
-            <td><%= cart_item.item.with_tax_price %></td>
-            <td><%= cart_item.item.amount %></td>
-            <td><%= cart_item.subtotal %></td>
-          </tr>
-        <% end %>
+        <% if current_member.cart_item.present %>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td>
+                <%= image_tag cart_item.item.get_image(50,50) %>
+                <%= cart_item.item.name %>
+              </td>
+              <td><%= cart_item.item.with_tax_price %></td>
+              <td><%= cart_item.item.amount %></td>
+              <td><%= cart_item.subtotal %></td>
+            </tr>
+          <% end %>
       </tbody>
     </table>
   </div>
