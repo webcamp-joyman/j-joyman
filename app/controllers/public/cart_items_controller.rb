@@ -1,7 +1,7 @@
 class CartItemsController < ApplicationController
   def index
-    @cart_items = CartItem.all
-    
+    @cart_items = current_member.cart_items
+    @total = 0
   end
 
   def create
