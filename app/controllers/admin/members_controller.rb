@@ -5,4 +5,9 @@ class Admin::MembersController < ApplicationController
     @members = Member.page(params[:page])
   end
 
+  def show
+    @member = Member.find(params[:id])
+
+  end
+
 end
