@@ -17,6 +17,10 @@ class Admin::ItemsController < ApplicationController
     @items = Item.all.page(params[:page]).per(10)
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
   private
   def admin_item_params
     params.require(:item).permit(:name, :image, :description, :price, :is_active)
