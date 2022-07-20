@@ -6,7 +6,6 @@ class Public::MembersController < ApplicationController
     @member = current_member
   end
 
-  private
 
 
 
