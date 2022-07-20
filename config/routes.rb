@@ -21,8 +21,8 @@ devise_for :admin,skip:[:registrations, :passwords] , controllers: {
   get '/mypage' => 'members#show'
   get '/mypage/edit' => 'members#edit'
   patch '/mypage' => 'members#update'
-  get '/mypage/unsubscribe' => 'members#unsubscribe'
-  patch '/mypage/withdraw' => 'members#withdraw'
+  get '/mypage/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
+  patch '/mypage/withdraw' => 'members#withdraw', as: 'withdraw'
   
   delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items, only: [:index, :update, :destroy, :create]
@@ -42,10 +42,10 @@ devise_for :admin,skip:[:registrations, :passwords] , controllers: {
   
   resources :genres, only: [:index, :create, :edit, :update]
   
-  resources :members, only: [:index, :show, :edit, :update]
+  resources :members, only: [:index, :show, :edit, :update] 
   
   resources :orders, only: [:show, :update]
-  
+   
   resources :order_details, only: [:update]
   
   
