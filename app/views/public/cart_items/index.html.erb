@@ -4,7 +4,7 @@
       <h3>ショッピングカート</h3>
     </div>
   </div>
-  <div class="row">
+  <div class="row mt-2 mx-4">
     <table class="table table-bordered">
         <tr>
           <th>商品名</th>
@@ -13,9 +13,9 @@
           <th>小計</th>
           <th></th>
         </tr>
-        <% if current_member.cart_item.present %>
           <% @cart_items.each do |cart_item| %>
           <% @total = @total+ cart_item.subtotal %>
+          <tbody>
             <tr>
               <td>
                 <%= image_tag cart_item.item.get_image(50,50) %>
@@ -30,11 +30,11 @@
               </td>
               <td><%= cart_item.subtotal %></td>
               <td>
-                <%= link_to "削除する", cart_item_path(cart_item.id, cart_item), method: :delete, class: "btn btn-danger" %>
+                <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %>
               </td>
             </tr>
+          </tbody>
           <% end %>
-        <% end %>
     </table>
   </div>
 
@@ -45,7 +45,7 @@
         <td><%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %></td>
         <td></td>
         <td></td>
-        <th class="table-secondary align-middle">合計金額</th>
+        <td class="table-secondary align-middle">合計金額</td>
         <td class="table-secondary align-middle"><%= @total %>円</td>
       </tr>
     </table>
