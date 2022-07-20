@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class = "col-lg-5 offset-lg-1">
+      <%= image_tag @item.get_image(200, 200) %>
+    </div>
+    <div class = "col-lg-6">
+      <h2><%= @item.name %></h2> <br>
+      <%= @item.description %> <br>
+      <div class="aa">¥
+        <%= @item.price %>
+      </div>
+      <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+        <%= f.select :amount, *[1..10], placeholder: "個数選択" %>
+        <%= f.submit 'カートにいれる', class:"btn btn-success" %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+      <% end %>
+    </div>
+  </div>
+</div>
