@@ -1,6 +1,7 @@
 class Public::AddressesController < ApplicationController
   before_action :authenticate_member!
 
+
   def index
     @address = Address.new
     @addresses = current_member.addresses
