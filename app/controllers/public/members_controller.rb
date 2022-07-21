@@ -11,9 +11,15 @@ class Public::MembersController < ApplicationController
   end
   
   def update
-    
+    member = current_member
+    if member.update(member_params)
+      redirect_to mypage_path
+    else
+      render :edit
+    end
   end
      
+  
   
   private
   
