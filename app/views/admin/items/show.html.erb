@@ -16,8 +16,10 @@
           <th><%= @item.description %></th>
         </tr>
         <tr>
-          <th>税抜価格</th>
-          <th><%= @item.price %></th>
+          <th>税抜価格<br>
+              (税込価格)
+          </th>
+          <th><%= @item.price %> (<%= @item.with_tax_price %>) 円</th>
         </tr>
         <tr>
           <th>
