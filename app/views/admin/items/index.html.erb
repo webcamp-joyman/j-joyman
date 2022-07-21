@@ -8,6 +8,7 @@
           <tr>
             <th>商品ID</th>
             <th>商品名</th>
+            <th>ジャンル</th>
             <th>税抜価格</th>
             <th>ステータス</th>
           </tr>
@@ -21,7 +22,7 @@
                 <%= item.name %>
               <% end %>
             </td>
-            <td><%= item.genre_id %></td>
+            <td><%= item.genre.name %></td>
             <td><%= item.price %></td>
             <td>
               <% if item.is_active? == true %>
