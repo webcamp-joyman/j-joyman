@@ -7,9 +7,13 @@
       <h2><%= @item.name %></h2> <br>
       <%= @item.description %> <br>
       <div class="aa">¥
-        <%= @item.add_tax_price.to_s(:dalimited) %> (税込)
+        <%= @item.with_tax_price %> (税込)
       </div>
-      <span class = "text-success"><%= @item.is_active ? '販売中' : '販売停止中' %></span>
+      <% if @item.is_active? == true %>
+        <span class="text-success">販売中</span>
+      <% else %>
+        <span class="text-danger">販売停止中</span>
+      <% end %>
       <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
         <%= f.select :amount, *[1..10] %>
         <%= f.submit 'カートにいれる', class:"btn btn-success" %>

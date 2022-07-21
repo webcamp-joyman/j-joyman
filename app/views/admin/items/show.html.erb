@@ -4,7 +4,7 @@
     <div class="col-sm4">
       <%= image_tag @item.get_image(300, 300) %>
     </div>
-    <div class = "col-sm8">
+    <div class = "col-sm8 ml-5">
     <table>
       <tbody>
         <tr>
@@ -20,7 +20,13 @@
           <th><%= @item.price %></th>
         </tr>
         <tr>
-          <th><%= @item.is_active ? '販売中' : '販売停止中' %></th>
+          <th>
+            <% if @item.is_active? == true %>
+              <span class="text-success">販売中</span>
+            <% else %>
+              <span class="text-danger">販売停止中</span>
+            <% end %>
+          </th>
         </tr>
         <tr>
           <th>
