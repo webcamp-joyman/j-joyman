@@ -21,7 +21,13 @@
               <% end %>
             </td>
             <td><%= item.price %></td>
-            <td><%= item.is_active ? '販売中' : '販売停止中' %></td>
+            <td>
+              <% if item.is_active? == true %>
+                <span class="text-success">販売中</span>
+              <% else %>
+                <span class="text-danger">販売停止中</span>
+              <% end %>
+            </td>
           </tr>
         <% end %>
         </tbody>
