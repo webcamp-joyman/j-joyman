@@ -48,6 +48,5 @@ devise_for :admin,skip:[:registrations, :passwords] , controllers: {
    
   resources :order_details, only: [:update]
   
-  
   end
 end

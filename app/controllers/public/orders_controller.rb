@@ -3,18 +3,16 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
   end
   
-  def create # Order に情報を保存します
+  def create
   cart_items = current_member.cart_items.all
   @order = current_member.orders.new(order_params)
   if @order.save
     cart_items.each do |cart|
-      order_detail = Orderdetail.new
+      order_detail = OrderDetail.new
       order_detail.order_id = @order.id
       order_detail.item_id = cart.item_id
-      order_detail.amount = cart.item_amount
+      order_detail.amount = cart.amount
       order_detail.purchase_price = cart.item.price
-      order_detail.order_quantity = cart.quantity
-      order_detail.making_status = 0
       order_detail.save
     end
     redirect_to orders_complete_path
@@ -24,7 +22,6 @@ class Public::OrdersController < ApplicationController
     render :new
   end
   end
-  
   
   def confirmation
     @order = Order.new(order_params)
@@ -52,7 +49,7 @@ class Public::OrdersController < ApplicationController
   private
   
   def order_params
-    params.require(:order).permit(:post_code, :address, :name, :postage, :bill, :payment_method )
+    params.require(:order).permit(:post_code, :address, :name, :postage, :bill, :method_payment )
   end
 
   def address_params
