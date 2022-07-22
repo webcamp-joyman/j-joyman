@@ -20,12 +20,12 @@ class Public::MembersController < ApplicationController
   end
 
   def unsubscribe
-    @member = Member.find_by(email: params[:email])
+    @member = current_member
   end
 
 
   def withdraw
-    @member = Member.find_by(email: params[:email])
+    @member = current_member
     @member.update(is_valid: false)
     reset_session
     redirect_to root_path
