@@ -19,6 +19,9 @@ class Public::MembersController < ApplicationController
     end
   end
      
+  def unsubscribe
+    
+  end
   
   
   private
