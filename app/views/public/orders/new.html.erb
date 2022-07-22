@@ -1,27 +1,67 @@
 <div class ="container">
   <div class = "row">
-    <div class = "col-lg-4 offset-lg-1 mb-3">
+    <div class = "col-sm-12 my-2  text-center ax-auto">
       <h3 class="orders_new">注文情報入力</h3>
     </div>
   </div>
-  <%= form_with model: @order, url:orders_confirmation_path ,method: :post, local: true do |f| %>
+  <%= form_with model: @order,url: orders_confirmation_path do |f| %>
   <div class = "row">
-    <legend class = "col-sm-2 font-weight-800"><b>支払方法</b></legend>
+    <legend class = "col-sm-2 offset-lg-3 font-weight-800"><b>支払方法</b></legend>
   </div>
   <div class = "row">
-    <div class = "offset-sm-1 col-sm-9">
+    <div class = "offset-lg-3 col-sm-10">
       <%= f.radio_button :payment_method, Order.payment_methods.key(0), class: "form-check-input" %>
       <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card], class: "form-check-label" %>
     </div>
-    <div class = "offset-sm-1 col-sm-9">
+    <div class = "offset-lg-3 col-sm-10">
       <%= f.radio_button :payment_method, Order.payment_methods.key(1), class: "form-check-input" %>
       <%= f.label :payment_method, Order.payment_methods_i18n[:transfer], class: "form-check-label" %>
     </div>
   </div>
   <div class = "row mt-3">
-    <legend class = "col-sm-2 font-weight-800"><b>お届け先</b></legend>
-    
-    
+    <legend class = "col-sm-2 offset-lg-3 font-weight-800"><b>お届け先</b></legend>
+  </div>
+  <!-- customer テーブルに登録されている住所の場合です -->
+  <div class = "row">
+    <div class = "offset-sm-3 col-sm-9 my-2">
+      <%= f.radio_button :address_number, 1, class: "form-check-input" %> <!-- address_number と定義して1～3の番号を confirmation に送ります -->
+      <%= f.label :address_number_1, "ご自身の住所", class: "form-check-label" %><br>
+      〒<%= current_member.post_code %>
+      <%= current_member.address %><br>
+      <%= current_member.last_name + current_member.first_name %>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "offset-sm-3 col-sm-9 my-2">
+      <%= f.radio_button :address_number, 2, class: "form-check-input" %> <!-- address_number と定義して1～3の番号を confirmation に送ります -->
+      <%= f.label :address_number_2, "登録済み住所から選択", class: "form-check-label" %><br>
+      <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "offset-sm-3 col-sm-9 my-2">
+      <%= f.radio_button :address_number, 3, class: "form-check-input" %> <!-- address_number と定義して1～3の番号を confirmation に送ります -->
+      <%= f.label :address_number_3, "新しいお届け先", class: "form-check-label" %><br>
+      <table class = "table table-borderless table-sm">
+        <tr>
+          <td style = "width: 30%"><%= f.label :post_code, "郵便番号(ハイフンなし)" %></td>
+          <td><%= f.text_field :post_code, placeholder: "1234567" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :address, "住所" %></td>
+          <td><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", style: "width: 70%" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :address_name, "宛名" %></td>
+          <td><%= f.text_field :address_name, placeholder: "令和道子" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-sm-12 my-2  text-center ax-auto">
+      <%= f.submit "確認画面へ進む", class: "btn btn-primary", style: "width: 25%" %>
+    </div>
   </div>
   <% end %>
 </div>

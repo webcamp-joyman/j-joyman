@@ -27,7 +27,7 @@ devise_for :admin,skip:[:registrations, :passwords] , controllers: {
   delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items, only: [:index, :update, :destroy, :create]
   
-  get '/orders/confirmation' => 'orders#confirmation'
+  post '/orders/confirmation' => 'orders#confirmation'
   get '/orders/complete' => 'orders#complete'
   resources :orders, only: [:index, :show, :new, :create]
   
