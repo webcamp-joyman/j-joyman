@@ -45,6 +45,11 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_member.cart_items.all
     @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.item.price }
   end
+  
+  def complete
+  end
+    
+  
 
   private
   
