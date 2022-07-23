@@ -2,7 +2,7 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
   end
-  
+
   def create
   cart_items = current_member.cart_items.all
   @order = current_member.orders.new(order_params)
@@ -22,7 +22,7 @@ class Public::OrdersController < ApplicationController
     render :new
   end
   end
-  
+
   def confirmation
     @order = Order.new(order_params)
     @order.postage = 800
@@ -45,14 +45,18 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_member.cart_items.all
     @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.item.price }
   end
-  
+
   def complete
   end
-    
-  
+
+  def index
+    @order = Order.where(member_id: current_member.id)
+    @item = OrderDetail
+  end
+
 
   private
-  
+
   def order_params
     params.require(:order).permit(:post_code, :address, :name, :postage, :bill, :method_payment )
   end
