@@ -51,7 +51,11 @@ class Public::OrdersController < ApplicationController
 
   def index
     @order = Order.where(member_id: current_member.id)
-    @item = OrderDetail
+    @item = OrderDetail.all
+  end
+  
+  def show
+    
   end
 
 
