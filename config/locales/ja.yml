@@ -4,3 +4,9 @@
         method_payment:  # カラム名（payment_methodカラムに対して）
           credit_card: "クレジットカード"
           transfer: "銀行振込"
+        status:
+          wait_payment: "入金待ち"
+          payment_confirm: "入金確認"
+          production: "制作中"
+          ready_ship: "発送準備"
+          finish_ship: "発送済み"
