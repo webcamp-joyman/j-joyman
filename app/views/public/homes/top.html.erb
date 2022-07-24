@@ -1,8 +1,6 @@
 <div class='container'>
-
   <div class='row'>
     <%= render "public/items/genres", genres: @genres %>
-
     <div class="col-lg-7 mb-5">
       <div class="main_container">
         <%= image_tag "top.cake.jpg" , class: "main_image"%>
@@ -14,9 +12,11 @@
         </p>
       </div>
     <div class="row">
+      <div class="new_item_container col-lg-7 mb-5">
       <h3 class="text-left">新着商品</h3>
+        <div class="new_item text-left ">
         <% @itemes.each do |item| %>
-          <div class="new_item_image col-3 ml-3">
+          <div class="new_item_image ml-3">
             <%= link_to item_path(item) do %>
               <%= image_tag item.get_image(150,150) %><br>
             <% end %>
@@ -24,9 +24,11 @@
             ￥<%= (item.price).to_s(:delimited) %><br>
           </div>
           <% end %>
+        </div>
         <div class="text-right mr-5 mt-5">
           <%= link_to "全ての商品を見る >", items_path %>
         </div>
+      </div>
     </div>
     </div>
   </div>
