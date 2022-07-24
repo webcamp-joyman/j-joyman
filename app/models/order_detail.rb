@@ -3,15 +3,7 @@ class OrderDetail < ApplicationRecord
   belongs_to :item
 
   def with_tax_price
-    (price * 1.1).floor
-  end
-
-  def subtotal
-    with_tax_price * amount
-  end
-
-  def with_tax_price
-    (price * 1.1).floor
+    (purchase_price * 1.1).floor
   end
 
   def s_total
