@@ -1,10 +1,11 @@
  <div class = "container">
   <div class = "row">
-    <div class = "col-10">
-      <h2>商品一覧 (全<%= @items.count %>件)</h2>
-    </div>
+    <h3 class = "col-8 offset-2" style = 'background: linear-gradient(to right, #fff 0%, #ffd6ff 30%, #ffd6ff 70%, #fff 100%); font-weight: 600; width: 100%;'>
+      商品一覧 <span class ="h5">(<%= @items.count %>件)</span>
+    </h3>
   </div>
   <div class = "row">
+    <%= render "genres", genres: @genres %>
     <% @items.each do |item| %>
     <div class = "col-3 mx-auto">
       <%= link_to item_path(item.id) do %>
