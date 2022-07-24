@@ -1,10 +1,10 @@
 <div class="container px-5 px-sm-0">
-  <h3>商品詳細</h3>
   <div class="row">
-    <div class="col-sm4">
+    <div class="col-sm4 offset-2">
+      <h3>商品詳細</h3>
       <%= image_tag @item.get_image(300, 300) %>
     </div>
-    <div class = "col-sm8 ml-5">
+    <div class = "col-sm8 ml-5 mt-5">
     <table>
       <tbody>
         <tr>
@@ -26,6 +26,7 @@
           <th><%= @item.price %> (<%= @item.with_tax_price %>) 円</th>
         </tr>
         <tr>
+          <th>販売ステータス　</th>
           <th>
             <% if @item.is_active? == true %>
               <span class="text-success">販売中</span>
