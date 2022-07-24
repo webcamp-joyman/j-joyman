@@ -21,9 +21,13 @@
             <%= order.member.last_name + order.member.first_name %>
           </td>
           <td>
-            <%= order.where(order_id: order.id).sum(:item_quantity) %>
+            <% order.order_details.each do |order_detail| %>
+              <% order_detail.amount %>
+              <% @amount += order_detail.amount %>
+            <% end %>
+            <%= @amount %><% @amount = 0 %>
           </td>
-          <td><%= order.request_status_i18n %></td>
+          <td><%= order.status_i18n %></td>
         </tr>
       <% end %>
     </tbody>
