@@ -1,0 +1,26 @@
+<div class = "container">
+  <div class = "mx-auto  row  pt-3">
+    <!--ジャンル検索欄-->
+      <%= render 'genres', genres: @genres %>
+    <!--商品一覧-->
+    <div class = "col-10">
+      <h3 class = "m-2 py-2" style = 'background: linear-gradient(to right, #fff 0%, #ffd6ff 30%, #ffd6ff 70%, #fff 100%); font-weight: 600; width: 100%;' >
+        <%= @genre_searched.name %> 一覧<span class = "h5">（<%= "#{@all_items_searched.count}件" %>）</span>
+      </h3>
+      <div class = "items-list d-flex flex-wrap w-100 mb-3">
+      <% @items.each do |item| %>
+        <div class = "col-3 mx-auto">
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_image(200, 200) %><br>
+            <%= item.name %>
+          <% end %>
+            <div class="aa">¥
+              <%= item.price %>(税抜)
+            </div>
+        </div>
+      <% end %>
+      </div>
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>
