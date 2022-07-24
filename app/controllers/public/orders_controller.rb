@@ -53,9 +53,10 @@ class Public::OrdersController < ApplicationController
     @order = Order.where(member_id: current_member.id)
     @item = OrderDetail.all
   end
-  
+
   def show
     @order = Order.find(params[:id])
+    @item = OrderDetail.where(order_id: @order.id)
   end
 
 
