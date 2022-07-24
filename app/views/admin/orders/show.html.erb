@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class= "col-sm-12 text-center ax-auto">
+      <h3 class="orders_new">注文詳細履歴</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <table class="table table-">
+      <% @order.each do |order| %>
+      <tr>
+      <td><b>購入者</b></td>
+      <td><%= order.member.last_name + order.member.first_name %></td>
+      </tr>
+      <tr>
+      <td><b>注文日</b></td>
+      <td><%= order.created_at.strftime("%Y%m%d %H:%M:%S") %></td>
+      </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>
