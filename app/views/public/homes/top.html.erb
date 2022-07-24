@@ -1,8 +1,6 @@
 <div class='container'>
-
   <div class='row'>
-    <div class='col-lg-3'>
-    </div>
+    <%= render "public/items/genres", genres: @genres %>
     <div class="col-lg-7 mb-5">
       <div class="main_container">
         <%= image_tag "top.cake.jpg" , class: "main_image"%>
@@ -16,7 +14,7 @@
     <div class="row">
       <div class="new_item_container col-lg-7 mb-5">
       <h3 class="text-left">新着商品</h3>
-        <div class="new_item text-left">
+        <div class="new_item text-left ">
         <% @itemes.each do |item| %>
           <div class="new_item_image ml-3">
             <%= link_to item_path(item) do %>
