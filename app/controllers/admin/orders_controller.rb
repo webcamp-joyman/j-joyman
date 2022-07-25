@@ -16,7 +16,7 @@ class Admin::OrdersController < ApplicationController
       end
     end
     flash[:notice] = "注文ステータスが更新されました"
-    redirect_to admin_order_path(@order)
+    redirect_to request.referer
   end
   
   private
